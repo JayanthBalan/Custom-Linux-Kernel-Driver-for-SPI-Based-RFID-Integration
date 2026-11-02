@@ -1,0 +1,69 @@
+From: Jayanth Balan
+Subject: [PATCH] ARM: dts: am335x-boneblack: Enable SPI0 and add RC522
+
+Enable the AM335x SPI0 controller on the BeagleBone Black.
+Configure the SPI0 pins on the P9 header and declare an MFRC522
+RFID reader connected to chip select 0.
+
+SPI0 pin mapping:
+  P9_22 - SPI0_SCLK
+  P9_21 - SPI0_D0 (MISO)
+  P9_18 - SPI0_D1 (MOSI)
+  P9_17 - SPI0_CS0
+
+The RC522 is connected as an SPI peripheral at chip select 0.
+
+Signed-off-by: Jayanth Balan
+---
+ arch/arm/boot/dts/am335x-boneblack.dts | 32 ++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/arch/arm/boot/dts/am335x-boneblack.dts b/arch/arm/boot/dts/am335x-boneblack.dts
+--- a/arch/arm/boot/dts/am335x-boneblack.dts
++++ b/arch/arm/boot/dts/am335x-boneblack.dts
+@@ -1,1 +1,33 @@
+ #include "am335x-boneblack-hdmi.dtsi"
++
++/*
++ * SPI0 pin configuration for RC522 RFID reader.
++ *
++ * P9_22: SPI0_SCLK
++ * P9_21: SPI0_D0 (MISO)
++ * P9_18: SPI0_D1 (MOSI)
++ * P9_17: SPI0_CS0
++ */
++
++&am33xx_pinmux {
++    spi0_pins: pinmux-spi0-pins {
++        pinctrl-single,pins = <
++            AM33XX_PADCONF(AM335X_PIN_SPI0_SCLK, PIN_INPUT, MUX_MODE0)
++            AM33XX_PADCONF(AM335X_PIN_SPI0_D0,   PIN_INPUT, MUX_MODE0)
++            AM33XX_PADCONF(AM335X_PIN_SPI0_D1,   PIN_INPUT, MUX_MODE0)
++            AM33XX_PADCONF(AM335X_PIN_SPI0_CS0,  PIN_INPUT, MUX_MODE0)
++        >;
++    };
++};
++
++/*
++ * Enable SPI0 and register the RC522 peripheral.
++ */
++
++&spi0 {
++    #address-cells = <1>;
++    #size-cells = <0>;
++
++    pinctrl-names = "default";
++    pinctrl-0 = <&spi0_pins>;
++
++    status = "okay";
++
++    rc522@0 {
++        compatible = "jayanth,mfrc522";
++        reg = <0>;
++        spi-max-frequency = <1000000>;
++        status = "okay";
++    };
++};
++
+-- 
+2.34.1
