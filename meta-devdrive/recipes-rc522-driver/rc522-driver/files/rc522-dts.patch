@@ -32,7 +32,6 @@ diff --git a/arch/arm/boot/dts/am335x-boneblack.dts b/arch/arm/boot/dts/am335x-b
  #include "am335x-bone-common.dtsi"
  #include "am335x-boneblack-common.dtsi"
  #include "am335x-boneblack-hdmi.dtsi"
- 
 +/*
 + * SPI0 pin configuration for RC522 RFID reader.
 + *
