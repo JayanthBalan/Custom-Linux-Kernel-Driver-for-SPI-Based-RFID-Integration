@@ -27,12 +27,12 @@ diff --git a/arch/arm/boot/dts/am335x-boneblack.dts b/arch/arm/boot/dts/am335x-b
   * Copyright (C) 2012 Texas Instruments Incorporated - https://www.ti.com/
   */
  /dts-v1/;
-  
+ 
  #include "am33xx.dtsi"
  #include "am335x-bone-common.dtsi"
  #include "am335x-boneblack-common.dtsi"
  #include "am335x-boneblack-hdmi.dtsi"
-  
+ 
 +/*
 + * SPI0 pin configuration for RC522 RFID reader.
 + *
