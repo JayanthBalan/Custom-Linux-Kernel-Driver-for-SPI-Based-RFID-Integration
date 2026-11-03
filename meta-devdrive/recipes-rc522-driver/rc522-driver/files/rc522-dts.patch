@@ -15,15 +15,24 @@ The RC522 is connected as an SPI peripheral at chip select 0.
 
 Signed-off-by: Jayanth Balan
 ---
- arch/arm/boot/dts/am335x-boneblack.dts | 32 ++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ arch/arm/boot/dts/am335x-boneblack.dts | 37 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
 diff --git a/arch/arm/boot/dts/am335x-boneblack.dts b/arch/arm/boot/dts/am335x-boneblack.dts
 --- a/arch/arm/boot/dts/am335x-boneblack.dts
 +++ b/arch/arm/boot/dts/am335x-boneblack.dts
-@@ -1,1 +1,33 @@
+@@ -1,10 +1,47 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+  * Copyright (C) 2012 Texas Instruments Incorporated - https://www.ti.com/
+  */
+ /dts-v1/;
+  
+ #include "am33xx.dtsi"
+ #include "am335x-bone-common.dtsi"
+ #include "am335x-boneblack-common.dtsi"
  #include "am335x-boneblack-hdmi.dtsi"
-+
+  
 +/*
 + * SPI0 pin configuration for RC522 RFID reader.
 + *
@@ -49,9 +58,6 @@ diff --git a/arch/arm/boot/dts/am335x-boneblack.dts b/arch/arm/boot/dts/am335x-b
 + */
 +
 +&spi0 {
-+    #address-cells = <1>;
-+    #size-cells = <0>;
-+
 +    pinctrl-names = "default";
 +    pinctrl-0 = <&spi0_pins>;
 +
@@ -64,6 +70,3 @@ diff --git a/arch/arm/boot/dts/am335x-boneblack.dts b/arch/arm/boot/dts/am335x-b
 +        status = "okay";
 +    };
 +};
-+
--- 
-2.34.1
