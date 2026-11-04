@@ -1,5 +1,5 @@
 #!/bin/sh
-module=rc522
+module=rc522cdev
 device=rc522
 cd `dirname $0`
 
