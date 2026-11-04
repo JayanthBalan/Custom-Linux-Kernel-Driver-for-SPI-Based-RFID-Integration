@@ -1,0 +1,22 @@
+#!/bin/sh
+
+case "$1" in
+    start)
+        echo "Loading aeld-assignments components"
+        /usr/bin/aeld-cdev-load
+        ;;
+    stop)
+        echo "Unloading aeld-assignments components"
+        /usr/bin/aeld-cdev-unload
+        ;;
+    restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0

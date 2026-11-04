@@ -1,0 +1,8 @@
+#!/bin/sh
+module=rc522cdev
+device=rc522cdev
+cd `dirname $0`
+
+rmmod $module || exit 1
+
+rm -f /dev/${device}
