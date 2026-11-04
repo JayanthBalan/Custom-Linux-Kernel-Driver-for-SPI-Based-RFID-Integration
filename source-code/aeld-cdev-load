@@ -18,7 +18,7 @@ else
     echo "Local file ${module}.ko not found, attempting to modprobe"
     modprobe ${module} || exit 1
 fi
-major=$(awk "\$2==\"$module\" {print \$1}" /proc/devices)
+major=$(awk '$2=="rc522" {print $1}' /proc/devices)
 rm -f /dev/${device}
 mknod /dev/${device} c $major 0
 chgrp $group /dev/${device}

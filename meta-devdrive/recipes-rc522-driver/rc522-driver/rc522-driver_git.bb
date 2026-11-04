@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/JayanthBalan/Custom-Linux-Kernel-Driver-for-SPI-Based-RFID-Integration.git;protocol=https;branch=main"
 
 PV = "1.0+git${SRCPV}"
-SRCREV = "e2ac2b9361a0942c070864e8e6f5df7e1f9d56b4"
+SRCREV = "f3b54521334d0e28de4f6e4e14e4aaa8586c0d9c"
 
 S = "${WORKDIR}/git/source-code"
 
