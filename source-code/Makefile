@@ -9,7 +9,7 @@ EXTRA_CFLAGS += $(DEBFLAGS)
 
 ifneq ($(KERNELRELEASE),)
 obj-m := rc522cdev.o
-rc522cdev-y := rc522-drive.o
+rc522cdev-y := kernel-module/rc522-drive.o
 else
 
 KERNELDIR ?= /lib/modules/$(shell uname -r)/build
