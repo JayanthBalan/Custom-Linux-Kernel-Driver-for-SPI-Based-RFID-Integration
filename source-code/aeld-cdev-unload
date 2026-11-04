@@ -1,6 +1,6 @@
 #!/bin/sh
-module=rc522cdev
-device=rc522cdev
+module=rc522
+device=rc522
 cd `dirname $0`
 
 rmmod $module || exit 1

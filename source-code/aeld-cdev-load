@@ -1,6 +1,6 @@
 #!/bin/sh
-module=rc522cdev
-device=rc522cdev
+module=rc522
+device=rc522
 mode="664"
 cd `dirname $0`
 set -e
