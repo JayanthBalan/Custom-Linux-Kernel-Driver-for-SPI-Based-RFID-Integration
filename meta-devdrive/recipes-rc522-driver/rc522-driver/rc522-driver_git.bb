@@ -5,9 +5,9 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/JayanthBalan/Custom-Linux-Kernel-Driver-for-SPI-Based-RFID-Integration.git;protocol=https;branch=main"
 
 PV = "1.0+git${SRCPV}"
-SRCREV = "f3b54521334d0e28de4f6e4e14e4aaa8586c0d9c"
+SRCREV = "21d0f0c6fc18fdda3b34d5ce778588d3267c7a94"
 
-S = "${WORKDIR}/git/source-code"
+S = "${WORKDIR}/git/source-code/kernel-module"
 
 inherit module update-rc.d
 

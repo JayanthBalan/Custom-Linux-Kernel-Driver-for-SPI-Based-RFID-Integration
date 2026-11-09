@@ -58,27 +58,28 @@ elif [[ $1 == "-devdrive" || $2 == "-devdrive" || $3 == "-devdrive" || $4 == "-d
 	layer_opt=1
 elif [[ $1 == "-authapp" || $2 == "-authapp" || $3 == "-authapp" || $4 == "-authapp" ]]; then
 	layer_opt=2;
+elif [[ $1 == "-clean" || $2 == "-clean" || $3 == "-clean" || $4 == "-clean" ]]; then
+	layer_opt=4;
 fi
 
 if [ $layer_opt -eq 1 ]; then
 	mod_devdrive_layer
-
+elif [[ $layer_opt -eq 2 ]]; then
+	mod_authapp_layer
+elif [[ $layer_opt -eq 3 ]]; then
+	mod_devdrive_layer
+	mod_authapp_layer
+elif [[ $layer_opt -eq 4 ]]; then
 	bitbake-layers show-layers | grep "meta-authapp" > /dev/null
 	layer_info=$?
 	if [ $layer_info -eq 0 ]; then
 		bitbake-layers remove-layer meta-authapp
 	fi
-elif [[ $layer_opt -eq 2 ]]; then
-	mod_authapp_layer
-
 	bitbake-layers show-layers | grep "meta-devdrive" > /dev/null
 	layer_info=$?
 	if [ $layer_info -eq 0 ]; then
 		bitbake-layers remove-layer meta-devdrive
 	fi
-elif [[ $layer_opt -eq 3 ]]; then
-	mod_devdrive_layer
-	mod_authapp_layer
 fi
 
 set -e

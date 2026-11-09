@@ -11,7 +11,8 @@ ifneq ($(KERNELRELEASE),)
 obj-m := rc522cdev.o
 rc522cdev-y := kernel-module/rc522-drive.o
 else
-
+obj-m := rc522-poll.o
+aeldfinal-y := userspace-application/rc522-poll.o
 KERNELDIR ?= /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
 
